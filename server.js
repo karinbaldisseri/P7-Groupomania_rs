@@ -1,6 +1,5 @@
 const http = require('http');
 const app = require('./app');
-const { sequelize } = require('./models');
 
 const normalizePort = val => {
   const port = parseInt(val, 10);
@@ -32,7 +31,7 @@ const errorHandler = error => {
       console.error(bind + ' is already in use.');
       process.exit(1);
       break;
-    default:
+      default:
       throw error;
   }
 };
@@ -46,7 +45,4 @@ server.on('listening', () => {
     console.log('Listening on ' + bind);
 });
 
-server.listen({ port }, async () => {
-    //await sequelize.sync({ force: true })
-    //console.log('Database synced !')
-});
+server.listen(port);
